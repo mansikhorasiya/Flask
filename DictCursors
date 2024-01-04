@@ -1,0 +1,9 @@
+what is cursorclass=pymysql.cursors.DictCursor
+
+In Python's pymysql library,
+when establishing a connection to a MySQL database, you can specify the cursorclass parameter in the pymysql.connect() method to determine the type of cursor to be used.
+Setting cursorclass=pymysql.cursors.DictCursor specifically means that you want to use a dictionary cursor.
+
+A dictionary cursor, as opposed to a standard cursor, returns query results as dictionaries,
+where the keys are the column names and the values are the corresponding row values. This allows you to access the data in a more intuitive way,
+using keys instead of numerical indexes. It can be quite handy, especially when working with data where column names are more meaningful than their indices.
