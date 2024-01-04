@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<h1>Edit Page</h1>
+    <form action="/update" method="post">
+    <table border="2px">
+        {% for data in items %}
+            Firstname:<input type="text" name="firstname"
+                              value="{{data['Firstname']}}"><br><br>
+            Lastname:<input type="text" name="lastname"
+                            value="{{data['Lastname']}}"><br><br>
+            Username:<input type="text" name="username"
+                            value="{{data['Username']}}"><br><br>
+            Password:<input type="password"
+                            name="password"value="{{data['Password']}}"><br><br>
+            City:<select name="city"value="{{data['City']}}">
+
+            <option> Ahemdabad</option>
+            <option> Delhi</option>
+            <option> Mumbai</option>
+            <option> Bangalore</option>
+            <option>Hyderabad</option>>
+            </select><br><br>
+                {%if data ['Gender']=="Female" %}
+                Gender:<input type="radio" name="gender" value="Male">Male
+                        <input type="radio"name="gender" value="Female"
+                               checked>Female<br><br>
+                {%endif%}
+                {%if data ['Gender']=="Male" %}
+                Gender:<input type="radio" name="gender" value="Male" checked>Male
+                        <input type="radio"name="gender" value="Female">Female<br><br>
+                {%endif%}
+
+                Hobbies:
+                {%if "Cricket" in data ['hobbies'] %}
+                        <input type="checkbox" name="hobbies"
+                           value="Cricket" checked>Cricket
+                {%endif%}
+
+                {%if "Cricket" not in data %}
+                        <input type="checkbox" name="hobbies"
+                           value="Cricket">Cricket
+                {%endif%}
+
+                {%if "Reading" in data %}
+                        <input type="checkbox" name="hobbies"
+                           value="Reading" checked>Reading
+                {%endif%}
+
+                {%if "Reading" not in data %}
+                     <input type="checkbox" name="hobbies"
+                           value="Reading">Reading
+                {%endif%}
+
+                {%if "Music" in data %}
+                        <input type="checkbox" name="hobbies"
+                           value="Music" checked>Music<br><br>
+                {%endif%}
+                {%if "Music" not in data%}
+                        <input type="checkbox" name="hobbies"
+                           value="Music">Music<br><br>
+                {%endif%}
+
+                <input type="hidden" value="{{data['RegId']}}" name="id">
+
+                <input type="submit" name="update" value="Save">
+        {% endfor %}
+    </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Page</title>
+</head>
+<body>
+<form action="View.html" method="post">
+    <table border="2px">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>User Name</th>
+                <th>Password</th>
+                <th>City</th>
+                <th>Gender</th>
+                <th>Hobbies</th>
+                <th>Actions</th>
+            </tr>
+            {% for row in item %}
+            <tr>
+                <td>{{ row["Firstname"] }}</td>
+                <td>{{ row["Lastname"] }}</td>
+                <td>{{ row["Username"] }}</td>
+                <td>{{ row["Password"] }}</td>
+                <td>{{ row["City"] }}</td>
+                <td>{{ row["Gender"] }}</td>
+                <td>{{ row["Hobbies"] }}</td>
+                <td>
+                   <a href="/edit?id={{ row['RegId'] }}">Edit</a>
+                    <a href="/delete?id={{row['RegId']}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+</form>
+</body>
+</html>
