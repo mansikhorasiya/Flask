@@ -2,6 +2,10 @@ The MVC (Model-View-Controller) design pattern is used to create scalable and ma
 This pattern divides an application into three main logical components:
 Model, View, and Controller.
 
+Models: a way for talking about data
+Views: a way for talking about user interfaces
+Controllers: a way for talking about program logic
+
 Model: The Model represents the data and business logic of the application. It often interacts with the database, performs data manipulation, and enforces the application's rules. In Flask, models are often defined using libraries like SQLAlchemy to create database models that represent tables and their relationships.
 
 View: The View is responsible for presenting the data to the user. It renders the user interface, which users interact with. In Flask, views are typically created using Jinja templates, which help to generate HTML dynamically by embedding Python code within HTML.
