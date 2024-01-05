@@ -1,0 +1,20 @@
+The MVC (Model-View-Controller) design pattern is used to create scalable and maintainable web applications.
+This pattern divides an application into three main logical components:
+Model, View, and Controller.
+
+Model: The Model represents the data and business logic of the application. It often interacts with the database, performs data manipulation, and enforces the application's rules. In Flask, models are often defined using libraries like SQLAlchemy to create database models that represent tables and their relationships.
+
+View: The View is responsible for presenting the data to the user. It renders the user interface, which users interact with. In Flask, views are typically created using Jinja templates, which help to generate HTML dynamically by embedding Python code within HTML.
+
+Controller: The Controller acts as an intermediary between the Model and the View. It handles user inputs, processes requests, interacts with the Model to retrieve data, and passes that data to the View for presentation. In Flask, controllers are essentially the routes defined using decorators like @app.route('/'), where each route/controller handles a specific HTTP request and invokes the necessary logic.
+
+Flask, being a microframework, doesn't strictly enforce the MVC pattern as some larger frameworks might. However, developers often use a similar structure to implement the separation of concerns in their applications. Routes (controllers) handle requests, templates (views) render the user interface, and models represent the data and business logic.
+
+A simple Flask application might organize its code following the MVC pattern by having separate modules or directories for models (representing data and interactions with the database), views (Jinja templates for HTML presentation), and controllers (route definitions handling requests and coordinating between models and views).
+
+what is DAO,VO in python:
+Data Access Object (DAO): DAO is a design pattern used to abstract and encapsulate the access to a data source such as a database. In Flask applications, DAOs are often used to separate the database interaction logic from the rest of the application. They provide methods to interact with the database (like CRUD operations: create, read, update, delete) without exposing the underlying database details to the rest of the application.
+
+Value Object (VO): Value objects are objects that represent a value rather than an entity. In Python Flask, they are commonly used to encapsulate a set of related values into a single object. They can be used to carry data between different parts of the application or to represent immutable values. For instance, a Value Object might represent a user's details or a specific piece of data that needs to be passed around within the application.
+
+Both DAOs and VOs are used in software development to improve code organization, encapsulation, and separation of concerns. DAOs help in abstracting the data access logic, while VOs help in encapsulating related values into coherent objects.
