@@ -1,0 +1,17 @@
+ORM stands for Object-Relational Mapping. It's a programming technique used to convert data between incompatible systems in object-oriented programming languages (like Python, Java, etc.) and relational databases (like MySQL, PostgreSQL, SQLite, etc.).
+
+In essence, ORM allows you to work with a relational database using an object-oriented paradigm. Instead of writing direct SQL queries to interact with the database, ORM libraries provide a way to manipulate the database using high-level programming constructs like classes, objects, and methods.
+
+ORM libraries like SQLAlchemy in Python or Hibernate in Java map the database tables to classes (objects) in the programming language and provide mechanisms to perform CRUD operations (Create, Read, Update, Delete) on these objects, abstracting away much of the underlying SQL syntax.
+
+ORM systems generally offer:
+
+Object-oriented approach: They let you work with database entities as if they were regular objects in your programming language, abstracting away the complexities of SQL.
+
+Portability and database independence: You can write code that can potentially work with different database systems by changing some configuration settings.
+
+Abstraction of SQL: You don't need to write raw SQL queries most of the time. Instead, you work with high-level constructs provided by the ORM library.
+
+Maintainability and readability: ORM can often make code more maintainable and readable, especially for developers more comfortable with object-oriented programming than SQL.
+
+Overall, ORM simplifies the interaction between the application and the database by providing a higher-level interface that enables developers to work with the data in a more natural, object-oriented way.
