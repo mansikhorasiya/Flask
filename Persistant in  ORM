@@ -1,0 +1,65 @@
+# PEP 8 is the style guide for Python code, providing conventions for writing clear, readable, and consistent code. If you want to save the content of PEP 8 in a text file, you can do so by copying the content from the official Python website or any other reliable source and pasting it into a text file using a text editor. The content of PEP 8 is a set of guidelines, so it is suitable for plain text.
+
+# Regarding Object-Relational Mapping (ORM) and persistent data in ORM:
+
+### Object-Relational Mapping (ORM):
+# ORM is a programming technique that converts data between incompatible type systems, in object-oriented programming languages, and relational databases. Instead of writing SQL queries, developers interact with a database using high-level object-oriented constructs.
+
+### Persistent in ORM:
+# Persistence in ORM refers to the ability to store and retrieve objects from a database in a way that maintains their state. When an object is persistent, changes made to it are reflected in the database, and the object can be retrieved later with its updated state.
+
+### Second-Level Caching in ORM:
+# Second-level caching is a feature in ORM systems that allows caching data at a level beyond the session or transaction scope. This caching mechanism operates at a broader scope, such as across multiple sessions or transactions. The purpose is to reduce the number of database queries by storing and retrieving data from an in-memory cache.
+
+# In a second-level cache:
+# - *Data Storage:* Objects or query results are stored in the cache.
+# - *Scope:* The cache is shared among different sessions or transactions.
+# - *Performance:* Reduces the need to repeatedly query the database for the same data.
+
+# This feature is beneficial in scenarios where certain data is frequently accessed by different parts of an application or by multiple users.
+
+# Here is a simple example in SQLAlchemy (a popular Python ORM) that demonstrates second-level caching:
+
+# python
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import Session, scoped_session, sessionmaker
+
+Base = declarative_base()
+
+class User(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    username = Column(String)
+
+# Create an SQLite in-memory database
+engine = create_engine('sqlite:///:memory:')
+
+# Bind the engine to the Base class
+Base.metadata.create_all(engine)
+
+# Create a scoped session with second-level caching enabled
+session_factory = sessionmaker(bind=engine)
+ScopedSession = scoped_session(session_factory)
+ScopedSession.configure(
+    bind=engine,
+    expire_on_commit=False,  # Do not expire objects on commit
+    autoflush=False,         # Disable autoflush to control when queries are issued
+    expire_on_flush=False    # Do not expire objects on flush
+)
+
+# Example usage of the second-level cache
+with ScopedSession() as session:
+    # Enable second-level cache for the query
+    query = session.query(User).enable_eagerloads(True)
+
+    # Execute the query for the first time
+    user = query.first()
+    print(user.username)
+
+    # The second time, the result is retrieved from the cache
+    user = query.first()
+    print(user.username)
+
+
+# This example uses SQLAlchemy's second-level caching with a scoped session. The data retrieved from the database is cached, and subsequent queries benefit from this cache, reducing the need for repeated database access.
