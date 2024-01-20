@@ -21,7 +21,7 @@ app.config['SQLALCHEMY_ECHO'] = True
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = \
-    'mysql+pymysql://root:root@localhost:3306/flaskdb'
+    'mysql+pymysql://root:rootroot@localhost:3306/flask_demo'
 
 app.config['SQLALCHEMY_MAX_OVERFLOW'] = 0
 

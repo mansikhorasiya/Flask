@@ -36,3 +36,12 @@ def searchCategory():
     data=category_dao.search_category()
     print(data)
     return render_template('viewCategory.html',data=data)
+
+@app.route("/delete_category")
+def delete_category():
+    category_id=request.args.get('category_id')
+    category_vo=CategoryVo
+    category_vo.category_id=category_id
+    category_dao=CategoryDAO
+    category_dao.delete_category(category_vo)
+    return redirect('/searchCategory')

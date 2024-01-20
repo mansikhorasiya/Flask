@@ -10,3 +10,8 @@ class CategoryDAO:
         query=db.session.query(CategoryVo).all()
         db.session.commit()
         return  query
+    
+    def delete_category(self,category_vo):
+        data=CategoryVo.query.get(category_vo.category_id)
+        db.session.delete(data)
+        db.session.commit()

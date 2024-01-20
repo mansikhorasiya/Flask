@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>view Category</title>
+</head>
+<body>
+<table border="1px">
+    <tr>
+        <td>Category_Name</td>
+        <td>Category_Description</td>
+        <td>Action</td>
+    </tr>
+    {% for i in data %}
+        <tr>
+            <td>{{i['category_name']}}</td>
+            <td>{{i['category_description'] }}</td>
+            <td><a href="/delete_category?category_id={{ i
+            .category_id}}">delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
