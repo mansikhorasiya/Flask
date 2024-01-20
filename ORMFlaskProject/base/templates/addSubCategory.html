@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add SubCategory</title>
+</head>
+<body>
+    <form action="addSubCategory" method="post">
+        Category Name:<select name="category_id" id='category_name'>
+        {% for i in data %}
+        <option value="{{i.category_id}}">{{i.category_name}}</option>
+        {% endfor %}
+    </select><br><br>
+    sub category Name:<input type="text" name="subcategory_name"><br><br>
+    sub category Description:<input type="text" name="subcategory_description"><br><br>
+    <input type="submit" value="SUBMIT">
+
+
+    </form>
+</body>
+</html>

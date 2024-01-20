@@ -2,16 +2,14 @@ from base import app
 from flask import render_template,request,redirect
 from base.com.vo.category_vo import CategoryVo
 from  base.com.dao.category_dao import CategoryDAO
-    
 
-# category_blueprint = Blueprint('category', __name__, url_prefix='/category')
+# from base.com.vo import category_vo
 
 @app.route('/')
 def home():
-    # Logic related to the category page
     return render_template("home.html")
 
-@app.route("/add_category")
+@app.route('/add_category')
 def add_category():
     return render_template('addCategory.html')
 
@@ -28,7 +26,7 @@ def insert_category():
 
     category_dao.insert_category(category_vo)
 
-    return render_template('addCategory.html')
+    return redirect("/searchCategory")
 
 @app.route("/searchCategory")
 def searchCategory():
@@ -40,8 +38,38 @@ def searchCategory():
 @app.route("/delete_category")
 def delete_category():
     category_id=request.args.get('category_id')
-    category_vo=CategoryVo
+    category_vo=CategoryVo()
     category_vo.category_id=category_id
-    category_dao=CategoryDAO
+    category_dao = CategoryDAO()
     category_dao.delete_category(category_vo)
+    return redirect('/searchCategory')
+
+@app.route("/edit_category")
+def edit_category():
+    category_id = request.args.get('category_id')
+    category_vo = CategoryVo()
+
+    category_vo.category_id = category_id
+    category_dao = CategoryDAO()
+
+    data= category_dao.edit_category(category_vo)
+
+
+    return render_template('edit.html',data=data)
+
+@app.route("/update_category",methods=['Post'])
+def update_category():
+    category_name = request.form.get('name')
+    category_description = request.form.get('description')
+    category_id=request.form.get('id')
+
+    category_vo=CategoryVo()
+    category_vo.category_id=category_id
+    category_vo.category_name=category_name
+    category_vo.category_description=category_description
+
+
+    category_dao=CategoryDAO()
+    category_dao.update_category(category_vo)
+
     return redirect('/searchCategory')

@@ -5,21 +5,23 @@
     <title>view Category</title>
 </head>
 <body>
-<table border="1px">
-    <tr>
-        <td>Category_Name</td>
-        <td>Category_Description</td>
-        <td>Action</td>
-    </tr>
-    {% for i in data %}
+    <table border="1px">
         <tr>
-            <td>{{i['category_name']}}</td>
-            <td>{{i['category_description'] }}</td>
-            <td><a href="/delete_category?category_id={{ i
-            .category_id}}">delete</a>
-            </td>
+            <td>Category_Name</td>
+            <td>Category_Description</td>
+            <td>Action</td>
         </tr>
-    {% endfor %}
-</table>
-</body>
-</html>
+        {% for i in data %}
+            <tr>
+                <td>{{i['category_name']}}</td>
+                <td>{{i['category_description'] }}</td>
+                <td><a href="/delete_category?category_id={{ i
+                .category_id}}">delete</a>
+                    <a href="/edit_category?category_id={{i.category_id}}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    </body>
+    </html>
+    
